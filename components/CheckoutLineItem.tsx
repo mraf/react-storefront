@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-import { useCheckoutWithToken } from "@/lib/providers/CheckoutWithTokenProvider";
+import { useCheckout } from "@/lib/providers/CheckoutProvider";
 import { translate } from "@/lib/translations";
 import {
   CheckoutLineDetailsFragment,
@@ -24,7 +24,7 @@ interface CheckoutLineItemProps {
 export const CheckoutLineItem = ({ line }: CheckoutLineItemProps) => {
   const paths = usePaths();
   const { query } = useRegions();
-  const { checkoutToken: token } = useCheckoutWithToken();
+  const { checkoutToken: token } = useCheckout();
   const [checkoutLineUpdateMutation, { loading: loadingLineUpdate }] =
     useCheckoutLineUpdateMutation();
   const [removeProductFromCheckout] = useRemoveProductFromCheckoutMutation();

@@ -5,6 +5,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/outline";
 import { useAuth, useAuthState } from "@saleor/sdk";
+import { CheckoutLineCountableEdge } from "@saleor/sdk/dist/apollo/types";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,18 +13,17 @@ import React, { useState } from "react";
 
 import { MainMenu } from "@/components/MainMenu";
 import { usePaths } from "@/lib/paths";
-import { useCheckoutWithToken } from "@/lib/providers/CheckoutWithTokenProvider";
+import { useCheckout } from "@/lib/providers/CheckoutProvider";
+import { CheckoutLine, CheckoutLineDetailsFragment } from "@/saleor/api";
 
 import { RegionDialog } from "./RegionDialog";
 import { useRegions } from "./RegionsProvider";
-import { CheckoutLine, CheckoutLineDetailsFragment } from "@/saleor/api";
-import { CheckoutLineCountableEdge } from "@saleor/sdk/dist/apollo/types";
 
 export const Navbar = () => {
   const paths = usePaths();
   const [isRegionDialogOpen, setRegionDialogOpen] = useState(false);
   const { currentChannel } = useRegions();
-  const { checkout, resetCheckoutToken } = useCheckoutWithToken();
+  const { checkout, resetCheckoutToken } = useCheckout();
 
   const { logout } = useAuth();
   const router = useRouter();

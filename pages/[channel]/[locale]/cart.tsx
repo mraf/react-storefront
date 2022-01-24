@@ -4,12 +4,11 @@ import React, { ReactElement } from "react";
 import { CartSummary, CheckoutLineItem, Layout, Spinner } from "@/components";
 import { BaseSeo } from "@/components/seo/BaseSeo";
 import { usePaths } from "@/lib/paths";
-import { useCheckoutWithToken } from "@/lib/providers/CheckoutWithTokenProvider";
+import { useCheckout } from "@/lib/providers/CheckoutProvider";
 
 const Cart = () => {
   const paths = usePaths();
-  const { loading, checkoutError, checkout, checkoutToken } =
-    useCheckoutWithToken();
+  const { loading, checkoutError, checkout, checkoutToken } = useCheckout();
 
   if (loading) {
     return <Spinner />;
