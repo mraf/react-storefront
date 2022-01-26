@@ -1,4 +1,3 @@
-import { useApolloClient } from "@apollo/client";
 import {
   SearchIcon,
   ShoppingBagIcon,
@@ -27,20 +26,19 @@ export const Navbar = () => {
   const [checkoutToken, setCheckoutToken] = useLocalStorage(CHECKOUT_TOKEN);
   const { logout } = useAuth();
   const router = useRouter();
-  const client = useApolloClient();
+  // const client = useApolloClient();
   const { authenticated, user } = useAuthState();
   const { query } = useRegions();
 
-  const { data } = useCheckoutByTokenQuery({
+  const [{ data }] = useCheckoutByTokenQuery({
     variables: { checkoutToken, locale: query.locale },
-    skip: !checkoutToken || !process.browser,
   });
 
   const onLogout = async () => {
     // clear all the user data on logout
     await logout();
     await setCheckoutToken("");
-    await client.resetStore();
+    // await client.resetStore();
     router.push(paths.$url());
   };
   const counter = data?.checkout?.lines?.length || 0;

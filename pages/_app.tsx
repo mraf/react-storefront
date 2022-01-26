@@ -1,9 +1,9 @@
 import "styles/globals.css";
 
-import { ApolloProvider } from "@apollo/client";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import React, { ReactElement, ReactNode } from "react";
+import { Provider } from "urql";
 
 import RegionsProvider from "@/components/RegionsProvider";
 import SaleorProviderWithChannels from "@/components/SaleorProviderWithChannels";
@@ -22,11 +22,11 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <RegionsProvider>
-      <ApolloProvider client={apolloClient}>
+      <Provider value={apolloClient}>
         <SaleorProviderWithChannels>
           {getLayout(<Component {...pageProps} />)}
         </SaleorProviderWithChannels>
-      </ApolloProvider>
+      </Provider>
     </RegionsProvider>
   );
 };

@@ -15,8 +15,8 @@ export const AddressBookCard = ({
   address,
   onRefreshBook,
 }: AddressBookCardProps) => {
-  const [setAddressDefaultMutation] = useSetAddressDefaultMutation();
-  const [deleteAddressMutation] = useAddressDeleteMutation();
+  const [,setAddressDefaultMutation] = useSetAddressDefaultMutation();
+  const [,deleteAddressMutation] = useAddressDeleteMutation();
 
   let cardHeader = "";
   if (address.isDefaultShippingAddress && address.isDefaultBillingAddress) {
@@ -29,7 +29,7 @@ export const AddressBookCard = ({
 
   const onDeleteAddress = (addressId: string) => {
     deleteAddressMutation({
-      variables: { id: addressId },
+      id: addressId,
     });
     onRefreshBook();
   };
@@ -45,7 +45,7 @@ export const AddressBookCard = ({
           className="my-1"
           onClick={() =>
             setAddressDefaultMutation({
-              variables: { id: address.id, type: "BILLING" },
+              id: address.id, type: "BILLING",
             })
           }
         >
@@ -57,7 +57,7 @@ export const AddressBookCard = ({
           className="my-1"
           onClick={() =>
             setAddressDefaultMutation({
-              variables: { id: address.id, type: "SHIPPING" },
+              id: address.id, type: "SHIPPING",
             })
           }
         >

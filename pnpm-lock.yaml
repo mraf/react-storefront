@@ -1,13 +1,13 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@apollo/client': 3.5.8
+  '@apollo/client': ^3.5.8
   '@graphql-codegen/add': ^3.1.1
   '@graphql-codegen/cli': 2.4.0
   '@graphql-codegen/introspection': 2.1.1
   '@graphql-codegen/typescript': 2.4.2
   '@graphql-codegen/typescript-operations': 2.2.2
-  '@graphql-codegen/typescript-react-apollo': 3.2.4
+  '@graphql-codegen/typescript-urql': ^3.4.2
   '@headlessui/react': 1.4.3
   '@heroicons/react': 1.0.5
   '@next/bundle-analyzer': ^12.0.8
@@ -42,6 +42,7 @@ specifiers:
   react-use: ^17.3.2
   tailwindcss: 3.0.16
   typescript: 4.5.5
+  urql: ^2.0.6
 
 dependencies:
   '@apollo/client': 3.5.8_graphql@16.2.0+react@18.0.0-rc.0
@@ -66,6 +67,7 @@ dependencies:
   react-dom: 18.0.0-rc.0_react@18.0.0-rc.0
   react-hook-form: 7.25.1_react@18.0.0-rc.0
   react-use: 17.3.2_757a802188413a36d4f24237d13b8e90
+  urql: 2.0.6_graphql@16.2.0+react@18.0.0-rc.0
 
 devDependencies:
   '@graphql-codegen/add': 3.1.1_graphql@16.2.0
@@ -73,7 +75,7 @@ devDependencies:
   '@graphql-codegen/introspection': 2.1.1_graphql@16.2.0
   '@graphql-codegen/typescript': 2.4.2_graphql@16.2.0
   '@graphql-codegen/typescript-operations': 2.2.2_graphql@16.2.0
-  '@graphql-codegen/typescript-react-apollo': 3.2.4_graphql@16.2.0
+  '@graphql-codegen/typescript-urql': 3.4.2_graphql@16.2.0
   '@next/bundle-analyzer': 12.0.8
   '@types/qs': 6.9.7
   '@types/react': 17.0.38
@@ -862,8 +864,8 @@ packages:
       - supports-color
     dev: true
 
-  /@graphql-codegen/typescript-react-apollo/3.2.4_graphql@16.2.0:
-    resolution: {integrity: sha512-IcbvGYHZy2hX9aGvxm3t9EBQ1lBgAod3jY/is53QEstdUWHNB+cEVtePgtUJGMm637KYcw4tvygaqrSeoWq8Sw==}
+  /@graphql-codegen/typescript-urql/3.4.2_graphql@16.2.0:
+    resolution: {integrity: sha512-MYpxOs7S/AMTMBATSqKGuijB5MK7hTNXJGyd8uXhjlJvYG1lgi+M1fWJuTOzsijn56uISh0OUgrZJcv7rVkT6w==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
       graphql-tag: ^2.0.0
@@ -1630,6 +1632,16 @@ packages:
       '@typescript-eslint/types': 5.10.1
       eslint-visitor-keys: 3.2.0
     dev: true
+
+  /@urql/core/2.3.6_graphql@16.2.0:
+    resolution: {integrity: sha512-PUxhtBh7/8167HJK6WqBv6Z0piuiaZHQGYbhwpNL9aIQmLROPEdaUYkY4wh45wPQXcTpnd11l0q3Pw+TI11pdw==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@graphql-typed-document-node/core': 3.1.1_graphql@16.2.0
+      graphql: 16.2.0
+      wonka: 4.0.15
+    dev: false
 
   /@wry/context/0.6.1:
     resolution: {integrity: sha512-LOmVnY1iTU2D8tv4Xf6MVMZZ+juIJ87Kt/plMijjN20NMAXGmH4u8bS1t0uT74cZ5gwpocYueV58YwyI8y+GKw==}
@@ -5723,6 +5735,18 @@ packages:
       prepend-http: 2.0.0
     dev: true
 
+  /urql/2.0.6_graphql@16.2.0+react@18.0.0-rc.0:
+    resolution: {integrity: sha512-ovK9mx7YxD/CKUwVZGbEDBzZjbCcNsr1990nIhDCKe3Ij/0gNcIa+0EIyXKceOPuYDYKavIoaNQV2kOZjQxFcw==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+      react: '>= 16.8.0'
+    dependencies:
+      '@urql/core': 2.3.6_graphql@16.2.0
+      graphql: 16.2.0
+      react: 18.0.0-rc.0
+      wonka: 4.0.15
+    dev: false
+
   /use-subscription/1.5.1_react@18.0.0-rc.0:
     resolution: {integrity: sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA==}
     peerDependencies:
@@ -5816,6 +5840,10 @@ packages:
     hasBin: true
     dependencies:
       isexe: 2.0.0
+
+  /wonka/4.0.15:
+    resolution: {integrity: sha512-U0IUQHKXXn6PFo9nqsHphVCE5m3IntqZNB9Jjn7EB1lrR7YTDY3YWgFvEvwniTzXSvOH/XMzAZaIfJF/LvHYXg==}
+    dev: false
 
   /word-wrap/1.2.3:
     resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}
